@@ -5,10 +5,15 @@ phases:
     runtime-versions:
       python: 3.11
     commands:
+      - echo "Starting install phase..."
       - echo "Installing dependencies..."
-      - npm install -silent -no-progress -g serverless
+      - npm install --silent --no-progress -g serverless
   build:
     commands:
+      - set -e
       - echo "Starting build phase..."
-      - serverless deploy --stage $ENVIROMENT --region $REGION --conceal --verbose
+      - serverless deploy --stage $ENVIRONMENT --region $REGION --conceal --verbose
       - echo "Build phase completed successfully."
+  post_build:
+    commands:
+      - echo "Post build phase completed."
