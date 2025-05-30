@@ -17,9 +17,9 @@ phases:
       # Inicia la fase de construcción
       - echo "Starting build phase..."
       # Muestra la variable de entorno ENVIRONMENT, usando 'dev' por defecto
-      - echo "ENVIRONMENT: ${ENVIRONMENT:-dev}"
+      - echo "ENVIRONMENT:${ENVIRONMENT:-dev}"
       # Muestra la variable de entorno REGION, usando 'us-east-1' por defecto
-      - echo "REGION: ${REGION:-us-east-1}"
+      - echo "REGION:${REGION:-us-east-1}"
       # Despliega el servicio Serverless usando las variables de entorno
       - serverless deploy --stage ${ENVIRONMENT:-dev} --region ${REGION:-us-east-1} --verbose
       # Confirma que la fase de construcción ha finalizado
