@@ -5,7 +5,7 @@ service: whatsappmassivo
 
 provider:
   name: aws
-  runtime: python3.12
+  runtime: python3.11
 
 functions:
   hello:
