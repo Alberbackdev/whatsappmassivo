@@ -5,17 +5,26 @@ phases:
     runtime-versions:
       python: 3.12
     commands:
+      # Inicia la fase de instalación
       - echo "Starting install phase..."
+      # Instala las dependencias globales de npm (Serverless Framework)
       - echo "Installing dependencies..."
       - npm install --silent --no-progress -g serverless
   build:
     commands:
+      # Detiene la construcción si algún comando falla
       - set -e
+      # Inicia la fase de construcción
       - echo "Starting build phase..."
+      # Muestra la variable de entorno ENVIRONMENT, usando 'dev' por defecto
       - echo "ENVIRONMENT: ${ENVIRONMENT:-dev}"
+      # Muestra la variable de entorno REGION, usando 'us-east-1' por defecto
       - echo "REGION: ${REGION:-us-east-1}"
+      # Despliega el servicio Serverless usando las variables de entorno
       - serverless deploy --stage ${ENVIRONMENT:-dev} --region ${REGION:-us-east-1} --verbose
+      # Confirma que la fase de construcción ha finalizado
       - echo "Build phase completed successfully."
   post_build:
     commands:
+      # Inicia la fase post-construcción
       - echo "Post build phase completed."
